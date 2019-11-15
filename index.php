@@ -2,6 +2,8 @@
 <?php session_start(); ?>
 <?php 
 
+$errors = array('error'=>'');
+$dbusername="";
 
 
 if (isset($_POST['submit'])){
@@ -19,22 +21,33 @@ if (isset($_POST['submit'])){
 
   while($row = mysqli_fetch_assoc($result)){
 
+     $userid = $row['id'];
      $dbusername = $row['username'];
      $dbpassword = $row['password'];
   }
 
   if ($username !== $dbusername || $password !== $dbpassword){
 
-    $error = "credentials not matching";
-  	header("Location:index.php");
+    
+    $errors['error'] = "credentials not matching";
+    //header("location:index.php");
+  
   }
 
+
   else if ($username == $dbusername && $password == $dbpassword){
+
+    $_SESSION['userid'] = $userid;
+    $_SESSION['username'] = $dbusername;
+    $_SESSION['password'] = $dbpassword;
 
   	header("Location:clients.php");
   }
 
+
 }
+
+
 
 
 ?>
@@ -69,7 +82,7 @@ if (isset($_POST['submit'])){
       <img src="./images/image2.jpg" class="d-block w-100" alt="image2">
     </div>
     <div class="carousel-item">
-      <img src="./images/image3.jpg" class="d-block w-100" alt="image3">
+      <img src="./images/image3.jpg" class="d-block w-100" alt="image3" height="540">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -90,7 +103,9 @@ if (isset($_POST['submit'])){
 
     <h3>LOGIN</h3>
 
-   <form class="py-3 was-validated" action="" method="post">
+   <form class="py-3 was-validated" action="index.php" method="post">
+
+   <p class="bg-warning text-center"><?php echo $errors['error']; ?></p>
  <div class="form-group">
 <label for="username">Enter username</label>
 <input type="text" class="form-control" placeholder="Enter username" name="username" id="text" required>
