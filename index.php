@@ -4,6 +4,8 @@
 
 $errors = array('error'=>'');
 $dbusername="";
+$username="";
+$password="";
 
 
 if (isset($_POST['submit'])){
@@ -108,7 +110,7 @@ if (isset($_POST['submit'])){
    <p class="bg-warning text-center"><?php echo $errors['error']; ?></p>
  <div class="form-group">
 <label for="username">Enter username</label>
-<input type="text" class="form-control" placeholder="Enter username" name="username" id="text" required>
+<input type="text" class="form-control" placeholder="Enter username" name="username" id="text"  value="<?php echo $username; ?>" required>
 <div class="valid-feedback">
 valid.
 </div>
@@ -119,7 +121,7 @@ please enter the required fields
        
  <div class="form-group">
 <label for="password">Enter Password</label>
-<input type="password" class="form-control" placeholder="Enter username" name="password" required>  
+<input type="password" class="form-control" placeholder="Enter username" name="password" value="<?php echo $password; ?>" required>  
 <div class="valid-feedback">
 valid.
 </div>
