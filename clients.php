@@ -9,12 +9,6 @@ if (isset($_POST['logout'])){
   header("location:index.php");
 }
 
-
-
-
-$query = "SELECT * FROM clients";
-$result = mysqli_query($connection , $query);
-
 ?>
 
 
@@ -50,10 +44,11 @@ $result = mysqli_query($connection , $query);
 
 
 <div class="container-fluid">
-<div class="row">
+<div class="row justify-content-center">
 <div class="col-sm-3  py-3">
  
- <h4>Welcome  <?php echo $_SESSION['username']; ?></h3>
+ <h3 class="text-center">CLIENTS</h3>
+ <hr>
 
 </div>	
 </div>	
@@ -80,8 +75,19 @@ $result = mysqli_query($connection , $query);
     <tr>
 </thead>
 <tbody id="result">
-<?php 
-  
+
+<?php
+
+$query = "SELECT * FROM clients";
+$result = mysqli_query($connection , $query);
+if(!$result){
+
+
+	die("Query failed " . mysqli_error($connection));
+}
+
+
+
    while ($row = mysqli_fetch_assoc($result)){
       $clientid = $row['clientid'];
       $clientname = $row['cname'];
@@ -100,11 +106,81 @@ $result = mysqli_query($connection , $query);
     echo "</tr>";
 
 }
-   ?>
+  
+
+?>
+
+
+
 </tbody>
 </table>
+
+<div class="row justify-content-end">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+  Add 
+</button>
+</div>
 </div>	
 </div>	
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ADD Clients</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+        <form id="client">
+        
+        <div class="form-group">
+        <label for="">Enter Client Name:</label>
+        <input type="text" name="cname" class="form-control" id="name">	
+        </div>
+
+        <div class="form-group">
+        <label for="">Enter Contact No:</label>
+        <input type="text" name="cmobile" class="form-control" id="phone">	
+        </div>
+
+        <div class="form-group">
+        <label for="">Enter work type:</label>
+        <input type="text" name="cwork" class="form-control" id="work">	
+        </div>
+         
+         <div class="form-group">
+        <label for="">Enter Client budget:</label>
+        <input type="text" name="cbudget" class="form-control" id="budget">	
+        </div>
+
+       <div class="form-group">
+        <input type="button" name="submit" class="btn btn-primary" value="ADD" id="button">	
+        </div>
+
+
+
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 </div>
 
 <?php include("includes/footer.php"); ?>
