@@ -1,39 +1,35 @@
- <?php include("includes/database.php"); ?>
- <?php //session_start(); ?>
-
- <?php
-
-$query = "SELECT * FROM clients";
-$result = mysqli_query($connection , $query);
-if(!$result){
-
-
-	die("Query failed " . mysqli_error($connection));
-}
-
-
-
-   while ($row = mysqli_fetch_assoc($result)){
-      $clientid = $row['clientid'];
-      $clientname = $row['cname'];
-      $clientmobile = $row['cmobile'];
-      $clientwork = $row['cwork'];
-      $clientbudget = $row['cbudget'];
-
+<?php include("includes/database.php"); ?> 
  
 
-	echo "<tr>";
-	echo "<td> $clientid </td>";
-    echo "<td> $clientname </td>";
-    echo "<td> $clientmobile </td>";
-    echo "<td> $clientwork </td>";
-    echo "<td> $clientbudget </td>";
-    echo "</tr>";
+<?php
 
+
+$query = "SELECT * FROM clients";
+$result = mysqli_query($connection, $query);
+
+if(!$result){
+
+	die("query failed" . mysqli_error($connection));
 }
-  
+
+
+while($row = mysqli_fetch_assoc($result)){
+
+   $clientid = $row['clientid'];
+   $cname = $row['cname'];
+   $cmobile = $row['cmobile'];
+   $cwork = $row['cwork'];
+   $cbudget = $row['cbudget'];
+   
+   echo "<tr>";
+   echo "<td>$clientid</td>";
+   echo "<td>$cname</td>";
+   echo "<td>$cmobile</td>";
+   echo "<td>$cwork</td>";
+   echo "<td>$cbudget</td>";
+   echo "<td><input type='button' value='Edit' class='btn btn-dark' onclick='edi($clientid)'></td>";
+   echo "<td><input type='button' value='Delete' class='btn btn-danger' onclick='deli($clientid)'></td>";
+   echo "</tr>";
+}
 
 ?>
-
-
-

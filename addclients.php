@@ -2,19 +2,24 @@
 <?php session_start(); ?>
 
 
-
 <?php
 
- $cname = $_POST['cname']; 
- $cmobile = $_POST['cmobile'];
- $cwork = $_POST['cwork'];
- $cbudget = $_POST['cbudget'];
+$cname = $_POST['cname'];
+$cmobile = $_POST['cmobile'];
+$cwork = $_POST['cwork'];
+$cbudget = $_POST['cbudget'];
 
 
- $query = "INSERT INTO clients (cname,cmobile,cwork,cbudget) VALUES('$cname','$cmobile','$cwork','$cbudget')";
- $result = mysqli_query($connection,$query);
+$query = "INSERT INTO clients(cname,cmobile,cwork,cbudget) VALUES('$cname','$cmobile','$cwork','$cbudget')";
+$result = mysqli_query($connection,$query);
 
+if($result){
 
+	echo "data added successfully";
+}
+else{
 
+	echo mysqli_error();
+}
 
-  ?>
+?>
