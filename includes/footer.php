@@ -60,7 +60,27 @@ $.ajax({
 
  function deli(id){
 
-    alert(id);
+    var conf = confirm("Are you sure to delete ?");
+
+    if(conf==true){
+
+    	//alert("deleted");
+
+       $.ajax({
+        url: "delete.php",
+        type: "POST",
+        data: {id:id},
+        success: function(msg){
+
+        	display();
+        	$("#addmsg").html(msg);
+        }
+
+
+       });
+
+
+    }
 
  }
 

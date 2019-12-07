@@ -54,11 +54,11 @@ if (isset($_POST['logout'])){
 
 </div>
 
-<!-- <div class="row">
+<div class="row">
  <div class="col-sm-3 px-5">
    <p id="addmsg"></p>
  </div> 
- </div>  -->
+ </div> 
 
 <div class="row d-flex justify-content-end px-3">
 
