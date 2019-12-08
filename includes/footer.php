@@ -85,6 +85,66 @@ $.ajax({
  }
 
 
+ function edi(id){
+
+    $("#hidden_field").val(id);
+
+    $.post("edit.php",
+    	   { id:id },
+
+    	   function(data,status){
+
+    	   	var user = JSON.parse(data);
+            
+            $("#up_cname").val(user.cname);
+            $("#up_cmobile").val(user.cmobile);
+            $("#up_cwork").val(user.cwork);
+            $("#up_cbudget").val(user.cbudget);
+
+
+    	   }
+    	);
+
+
+
+ 	$("#up_myModal").modal("show");
+ }
+
+
+ function update(){
+
+ 	var hidden_id = $("#hidden_field").val();
+ 	var up_cname = $("#up_cname").val();
+ 	var up_cmobile = $("#up_cmobile").val();
+ 	var up_cwork = $("#up_cwork").val();
+ 	var up_cbudget = $("#up_cbudget").val();
+
+    $.post("update.php",{
+               
+           hidden_id : hidden_id,
+           cname : up_cname,
+           cmobile : up_cmobile,
+           cwork : up_cwork,
+           cbudget : up_cbudget
+
+    },
+
+    function(data){
+         $("#up_myModal").modal("hide");
+         display();
+        $("#addmsg").html(data);
+      }
+    	
+
+
+
+   );
+
+
+
+ }
+
+
 
 
  </script>

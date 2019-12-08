@@ -12,7 +12,7 @@ if(!$result){
 	die("query failed" . mysqli_error($connection));
 }
 
-
+$no=1;
 while($row = mysqli_fetch_assoc($result)){
 
    $clientid = $row['clientid'];
@@ -22,7 +22,7 @@ while($row = mysqli_fetch_assoc($result)){
    $cbudget = $row['cbudget'];
    
    echo "<tr>";
-   echo "<td>$clientid</td>";
+   echo "<td>$no</td>";
    echo "<td>$cname</td>";
    echo "<td>$cmobile</td>";
    echo "<td>$cwork</td>";
@@ -30,6 +30,8 @@ while($row = mysqli_fetch_assoc($result)){
    echo "<td><input type='button' value='Edit' class='btn btn-dark' onclick='edi($clientid)'></td>";
    echo "<td><input type='button' value='Delete' class='btn btn-danger' onclick='deli($clientid)'></td>";
    echo "</tr>";
+   $no++;
+
 }
 
 ?>

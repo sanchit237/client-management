@@ -140,9 +140,6 @@ if (isset($_POST['logout'])){
        <!-- <div class="form-group">
         <input type="submit" name="submit" class="btn btn-primary" value="ADD" id="submit">	
         </div> -->
-
-
-
         </form>
 
       </div>
@@ -156,6 +153,62 @@ if (isset($_POST['logout'])){
     </div>
   </div>
 </div>
+
+
+<!-- update model -->
+<div class="modal fade" id="up_myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ADD Clients</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+        <form method="post">
+        
+        <div class="form-group">
+        <label for="">Enter Client Name:</label>
+        <input type="text" name="cname" class="form-control" id="up_cname" > 
+        </div>
+
+        <div class="form-group">
+        <label for="">Enter Contact No:</label>
+        <input type="text" name="cmobile" class="form-control" id="up_cmobile">  
+        </div>
+
+        <div class="form-group">
+        <label for="">Enter work type:</label>
+        <input type="text" name="cwork" class="form-control" id="up_cwork">  
+        </div>
+         
+         <div class="form-group">
+        <label for="">Enter Client budget:</label>
+        <input type="text" name="cbudget" class="form-control" id="up_cbudget">  
+        </div>
+
+       <!-- <div class="form-group">
+        <input type="submit" name="submit" class="btn btn-primary" value="ADD" id="submit"> 
+        </div> -->
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="update()">Update</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <input type="hidden" id="hidden_field">
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <button id="test">test</button>
 <h2 id="data"></h2>
